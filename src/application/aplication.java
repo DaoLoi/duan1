@@ -13,6 +13,7 @@ public class aplication {
         System.out.println("hsjfhasjkshasdjah");
         System.out.println("hi");
         System.out.println("tuuuuuu");
+        System.out.println("Loii");
     }
     
 }
