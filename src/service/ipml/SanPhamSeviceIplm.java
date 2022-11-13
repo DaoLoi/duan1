@@ -2,12 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package sevice.ipml;
+package service.ipml;
 
 import java.util.List;
 import model.SanPham;
 import repository.SanPhamRepository;
-import sevice.SanPhamSevice;
+import service.SanPhamSevice;
 
 /**
  *

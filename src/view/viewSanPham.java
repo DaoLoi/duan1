@@ -9,8 +9,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.SanPham;
-import sevice.SanPhamSevice;
-import sevice.ipml.SanPhamSeviceIplm;
+import service.SanPhamSevice;
+import service.ipml.SanPhamSeviceIplm;
 
 /**
  *
