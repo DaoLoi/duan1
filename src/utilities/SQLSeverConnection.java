@@ -20,11 +20,11 @@ public class SQLSeverConnection {
 
     public static final String PORT = "1433";
 
-    public static final String DBNAME = "QL_QUANAO";
+    public static final String DBNAME = "QL_QUANAO1";
 
     public static final String USERNAME = "sa";
 
-    public static final String PASSWORD = "loi0921283376";
+    public static final String PASSWORD = "123456";
 
     /**
      *
