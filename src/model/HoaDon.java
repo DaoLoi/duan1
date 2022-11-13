@@ -8,31 +8,30 @@ package model;
  *
  * @author ASUS
  */
-public class GioHang {
+public class HoaDon {
     
-    private String idGH, idKH, idNV;
-    private String tenSP,ngayLap, ngaySua;
+    private String idHD, idKH, idNV;
+    private  String ngayLap, ngaySua;
     private int trangThai;
 
-    public GioHang() {
+    public HoaDon() {
     }
 
-    public GioHang(String idGH, String idKH, String idNV, String tenSP, String ngayLap, String ngaySua, int trangThai) {
-        this.idGH = idGH;
+    public HoaDon(String idHD, String idKH, String idNV, String ngayLap, String ngaySua, int trangThai) {
+        this.idHD = idHD;
         this.idKH = idKH;
         this.idNV = idNV;
-        this.tenSP = tenSP;
         this.ngayLap = ngayLap;
         this.ngaySua = ngaySua;
         this.trangThai = trangThai;
     }
 
-    public String getIdGH() {
-        return idGH;
+    public String getIdHD() {
+        return idHD;
     }
 
-    public void setIdGH(String idGH) {
-        this.idGH = idGH;
+    public void setIdHD(String idHD) {
+        this.idHD = idHD;
     }
 
     public String getIdKH() {
@@ -49,14 +48,6 @@ public class GioHang {
 
     public void setIdNV(String idNV) {
         this.idNV = idNV;
-    }
-
-    public String getTenSP() {
-        return tenSP;
-    }
-
-    public void setTenSP(String tenSP) {
-        this.tenSP = tenSP;
     }
 
     public String getNgayLap() {
@@ -82,4 +73,6 @@ public class GioHang {
     public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
+    
+    
 }
