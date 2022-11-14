@@ -39,7 +39,7 @@ public class SQLSeverConnection {
 
         // Create a variable for the connection string.
         String connectionUrl = "jdbc:sqlserver://" + HOSTNAME + ":" + PORT + ";"
-                + "databaseName=" + DBNAME;
+                + "databaseName=" + DBNAME + ";encrypt=true;trustservercertificate=true;";
 
         try {
 
