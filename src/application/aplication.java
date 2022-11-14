@@ -14,6 +14,7 @@ public class aplication {
         System.out.println("hi");
         System.out.println("tuuuuuu");
         System.out.println("Loii");
+        System.out.println("ANh");
     }
     
 }
