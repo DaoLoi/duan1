@@ -5,7 +5,7 @@
 package repository;
 
 import model.HoaDon;
-import service.ipml.IFHoaDon;
+import repository.ipml.IFHoaDon;
 import utilities.SQLSeverConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

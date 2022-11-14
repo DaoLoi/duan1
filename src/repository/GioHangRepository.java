@@ -5,7 +5,7 @@
 package repository;
 
 import model.GioHang;
-import service.ipml.IFGioHang;
+import repository.ipml.IFGioHang;
 import utilities.SQLSeverConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
