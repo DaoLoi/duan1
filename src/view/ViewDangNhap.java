@@ -42,7 +42,7 @@ public class ViewDangNhap extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtTaiKhoan = new javax.swing.JTextField();
         txtPass = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        btnLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,10 +52,10 @@ public class ViewDangNhap extends javax.swing.JFrame {
 
         jLabel3.setText("Mat khau");
 
-        jButton1.setText("Dang nhap");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnLogin.setText("Dang nhap");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnLoginActionPerformed(evt);
             }
         });
 
@@ -80,7 +80,7 @@ public class ViewDangNhap extends javax.swing.JFrame {
                                 .addComponent(txtTaiKhoan))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(134, 134, 134)
-                        .addComponent(jButton1)))
+                        .addComponent(btnLogin)))
                 .addContainerGap(166, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -97,14 +97,14 @@ public class ViewDangNhap extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
-                .addComponent(jButton1)
+                .addComponent(btnLogin)
                 .addContainerGap(91, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
         for (DangNhap dn : dns) {
             if (txtTaiKhoan.getText().trim().isEmpty()) {
@@ -127,7 +127,7 @@ public class ViewDangNhap extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Sai tai khoan");
             }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,7 +165,7 @@ public class ViewDangNhap extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
