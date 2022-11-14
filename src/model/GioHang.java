@@ -11,17 +11,16 @@ package model;
 public class GioHang {
     
     private String idGH, idKH, idNV;
-    private String tenSP,ngayLap, ngaySua;
+    private String ngayLap, ngaySua;
     private int trangThai;
 
     public GioHang() {
     }
 
-    public GioHang(String idGH, String idKH, String idNV, String tenSP, String ngayLap, String ngaySua, int trangThai) {
+    public GioHang(String idGH, String idKH, String idNV, String ngayLap, String ngaySua, int trangThai) {
         this.idGH = idGH;
         this.idKH = idKH;
         this.idNV = idNV;
-        this.tenSP = tenSP;
         this.ngayLap = ngayLap;
         this.ngaySua = ngaySua;
         this.trangThai = trangThai;
@@ -51,14 +50,6 @@ public class GioHang {
         this.idNV = idNV;
     }
 
-    public String getTenSP() {
-        return tenSP;
-    }
-
-    public void setTenSP(String tenSP) {
-        this.tenSP = tenSP;
-    }
-
     public String getNgayLap() {
         return ngayLap;
     }
@@ -82,4 +73,6 @@ public class GioHang {
     public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
+
+    
 }

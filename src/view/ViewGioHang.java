@@ -27,7 +27,7 @@ public class ViewGioHang extends javax.swing.JFrame {
         for (GioHang ct : gioHangs) {
             Object[] row = new Object[]{
                 ct.getIdGH(), ct.getIdKH(), ct.getIdNV(),
-                ct.getTenSP(), ct.getNgayLap(), ct.getNgaySua(), ct.getTrangThai() == 1 ? "Đã Thanh Toán" : "Chưa Thanh Toán"
+                ct.getNgayLap(), ct.getNgaySua(), ct.getTrangThai() == 1 ? "Đã Thanh Toán" : "Chưa Thanh Toán"
             };
             dtm.addRow(row);
         }
@@ -37,7 +37,7 @@ public class ViewGioHang extends javax.swing.JFrame {
         initComponents();
         gioHangService = new GioHangService();
         dtm = (DefaultTableModel) tbGioHang.getModel();
-        String[] header = {"IdGH", "IdKH", "IdNV", "Tên sản phẩm", "Ngày Lập", "Ngày Sửa", "Trạng Thái"};
+        String[] header = {"IdGH", "IdKH", "IdNV", "Ngày Lập", "Ngày Sửa", "Trạng Thái"};
         dtm.setColumnIdentifiers(header);
     }
 
@@ -65,12 +65,10 @@ public class ViewGioHang extends javax.swing.JFrame {
         txtGH = new javax.swing.JTextField();
         txtKH = new javax.swing.JTextField();
         txtNV = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         txtNgayLap = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        txtTenSP = new javax.swing.JTextField();
         txtNgaySua = new javax.swing.JTextField();
         rbDaThanhToan = new javax.swing.JRadioButton();
         rbChuaThanhToan = new javax.swing.JRadioButton();
@@ -150,8 +148,6 @@ public class ViewGioHang extends javax.swing.JFrame {
         jLabel4.setText("idNV");
 
         txtGH.setEditable(false);
-
-        jLabel5.setText("Tên sản phẩm");
 
         jLabel6.setText("Ngày lập");
 
@@ -256,6 +252,12 @@ public class ViewGioHang extends javax.swing.JFrame {
                                 .addGap(188, 188, 188)
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(156, 156, 156)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(242, 242, 242)
+                                .addComponent(jLabel9))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGap(37, 37, 37)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -270,31 +272,23 @@ public class ViewGioHang extends javax.swing.JFrame {
                                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(txtNV, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(34, 34, 34)
+                                .addGap(33, 33, 33)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel5)
                                             .addComponent(jLabel6)
                                             .addComponent(jLabel7))
-                                        .addGap(18, 18, 18)
+                                        .addGap(42, 42, 42)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtNgaySua, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtNgayLap, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(txtNgayLap, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel8)
                                         .addGap(18, 18, 18)
                                         .addComponent(rbDaThanhToan)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(rbChuaThanhToan))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(156, 156, 156)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(242, 242, 242)
-                                .addComponent(jLabel9)))
-                        .addGap(0, 130, Short.MAX_VALUE)))
+                                        .addComponent(rbChuaThanhToan)))))
+                        .addGap(0, 131, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -305,29 +299,33 @@ public class ViewGioHang extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtGH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtTenSP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtNgayLap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtNgaySua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(rbDaThanhToan)
-                    .addComponent(rbChuaThanhToan))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtGH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtKH, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(txtNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(txtNgayLap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(txtNgaySua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(rbDaThanhToan)
+                            .addComponent(rbChuaThanhToan))))
+                .addGap(52, 52, 52)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -355,7 +353,7 @@ public class ViewGioHang extends javax.swing.JFrame {
         // TODO add your handling code here:
         GioHang gioHang = new GioHang();
         
-        gioHang.setTenSP(txtTenSP.getText());
+
         gioHang.setNgayLap(txtNgayLap.getText());
         gioHang.setNgaySua(txtNgaySua.getText());
         if (rbDaThanhToan.isSelected()) {
@@ -382,7 +380,7 @@ public class ViewGioHang extends javax.swing.JFrame {
         txtKH.setText(gioHang.getIdKH());
         txtNV.setText(gioHang.getIdNV());
 
-        txtTenSP.setText(gioHang.getTenSP());
+
         txtNgayLap.setText(gioHang.getNgayLap());
         txtNgaySua.setText(gioHang.getNgaySua());
         if (gioHang.getTrangThai() == 1) {
@@ -404,7 +402,7 @@ public class ViewGioHang extends javax.swing.JFrame {
         List<GioHang> gioHangs = gioHangService.getList();
         GioHang gioHang = gioHangs.get(index);
 
-        gioHang.setTenSP(txtTenSP.getText());
+
         gioHang.setNgayLap(txtNgayLap.getText());
         gioHang.setNgaySua(txtNgaySua.getText());
         if (rbDaThanhToan.isSelected()) {
@@ -492,7 +490,6 @@ public class ViewGioHang extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -513,6 +510,5 @@ public class ViewGioHang extends javax.swing.JFrame {
     private javax.swing.JTextField txtNgayLap;
     private javax.swing.JTextField txtNgaySua;
     private javax.swing.JTextField txtTK;
-    private javax.swing.JTextField txtTenSP;
     // End of variables declaration//GEN-END:variables
 }
