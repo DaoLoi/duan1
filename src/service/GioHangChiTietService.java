@@ -46,4 +46,13 @@ public class GioHangChiTietService implements IFGioHangChiTiet {
         return chiTietRepo.delete(idGHCT);
     }
 
+    @Override
+    public List<GioHangChiTiet> timKiem(String timChuoi, int so) {
+        try {
+            return chiTietRepo.timKiem(timChuoi, so);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
 }

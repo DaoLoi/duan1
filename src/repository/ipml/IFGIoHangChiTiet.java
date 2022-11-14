@@ -21,4 +21,5 @@ public interface IFGIoHangChiTiet {
 
     public boolean delete(String idGHCT);
 
+    List<GioHangChiTiet> timKiem(String timChuoi, int so);
 }

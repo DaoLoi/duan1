@@ -180,6 +180,11 @@ public class ViewGioHangChiTiet extends javax.swing.JFrame {
         jLabel9.setText("TÌm Kiếm");
 
         btnTK.setText("Tìm Kiếm");
+        btnTK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTKActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -418,6 +423,13 @@ public class ViewGioHangChiTiet extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTKActionPerformed
+        // TODO add your handling code here:
+        String timChuoi = txtTK.getText();
+        int  timSo = Integer.valueOf(txtTK.getText());
+        showData(chiTietService.timKiem(timChuoi, timSo));
+    }//GEN-LAST:event_btnTKActionPerformed
     public void showData(List<GioHangChiTiet> chiTiets) {
         dtm.setRowCount(0);
         for (GioHangChiTiet ct : chiTiets) {

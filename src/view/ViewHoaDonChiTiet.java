@@ -39,6 +39,7 @@ public class ViewHoaDonChiTiet extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btnUpdate = new javax.swing.JButton();
@@ -166,8 +167,11 @@ public class ViewHoaDonChiTiet extends javax.swing.JFrame {
 
         jLabel8.setText("Trạng Thái");
 
+        buttonGroup1.add(rdoDaThanhToan);
+        rdoDaThanhToan.setSelected(true);
         rdoDaThanhToan.setText("Đã Thanh Toán");
 
+        buttonGroup1.add(rdoChuaThanhToan);
         rdoChuaThanhToan.setText("Chưa Thanh Toán");
 
         jLabel1.setText("IdHDCT");
@@ -176,7 +180,11 @@ public class ViewHoaDonChiTiet extends javax.swing.JFrame {
 
         jLabel2.setText("IdHD");
 
+        txtHD.setEditable(false);
+
         jLabel3.setText("IdCTSP");
+
+        txtCTSP.setEditable(false);
 
         jLabel4.setText("Số Lượng");
 
@@ -304,9 +312,9 @@ public class ViewHoaDonChiTiet extends javax.swing.JFrame {
         if (rdoChuaThanhToan.isSelected()) {
             chiTiet.setTrangThai(0);
         }
-        String idGHCT = txtHDCT.getText();
+        String idHDCT = txtHDCT.getText();
         try {
-            chiTietService.update(chiTiet, idGHCT);
+            chiTietService.update(chiTiet, idHDCT);
             JOptionPane.showMessageDialog(this, "Sửa thành công!");
             showData(chiTietService.getList());
         } catch (Exception e) {
@@ -331,6 +339,22 @@ public class ViewHoaDonChiTiet extends javax.swing.JFrame {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
         HoaDonChiTiet chiTiet = new HoaDonChiTiet();
+        if (txtSoLuong.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Trống số lượng");
+            return;
+        }
+        if (txtDonGia.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Trống đơn giá");
+            return;
+        }
+        if (txtNgayLap.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Trống ngày lập");
+            return;
+        }
+        if (txtNgaySua.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Trống ngày sửa");
+            return;
+        }
         chiTiet.setSoLuong(Integer.valueOf(txtSoLuong.getText()));
         chiTiet.setDonGia(txtDonGia.getText());
         chiTiet.setNgayLap(txtNgayLap.getText());
@@ -445,6 +469,7 @@ public class ViewHoaDonChiTiet extends javax.swing.JFrame {
     private javax.swing.JButton btnTK;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnView;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

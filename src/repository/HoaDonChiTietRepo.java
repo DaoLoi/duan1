@@ -71,8 +71,8 @@ public class HoaDonChiTietRepo implements IFHoaDonChiTiet {
     }
 
     @Override
-    public boolean update(HoaDonChiTiet chiTiet, String idGHCT) {
-        String sql = "UPDATE HOADONCHITIET SET SOLUONG=?, DONGIA=?, NGAYLAP=?, NGAYSUA=?, TRANGTHAI=? WHERE IDGHCT=?";
+    public boolean update(HoaDonChiTiet chiTiet, String idHDCT) {
+        String sql = "UPDATE HOADONCHITIET SET SOLUONG=?, DONGIA=?, NGAYLAP=?, NGAYSUA=?, TRANGTHAI=? WHERE IDHDCT=?";
         try {
             Connection con = SQLSeverConnection.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
@@ -81,7 +81,7 @@ public class HoaDonChiTietRepo implements IFHoaDonChiTiet {
             ps.setString(3, chiTiet.getNgayLap());
             ps.setString(4, chiTiet.getNgaySua());
             ps.setInt(5, chiTiet.getTrangThai());
-            ps.setString(6, idGHCT);
+            ps.setString(6, idHDCT);
             ps.executeUpdate();
             ps.close();
             con.close();
@@ -93,12 +93,12 @@ public class HoaDonChiTietRepo implements IFHoaDonChiTiet {
     }
 
     @Override
-    public boolean delete(String idGHCT) {
-        String sql = "DELETE FROM HOADONCHITIET WHERE IDGHCT=?";
+    public boolean delete(String idHDCT) {
+        String sql = "DELETE FROM HOADONCHITIET WHERE IDHDCT=?";
         try {
             Connection con = SQLSeverConnection.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, idGHCT);
+            ps.setString(1, idHDCT);
             ps.executeUpdate();
             ps.close();
             con.close();

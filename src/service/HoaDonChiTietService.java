@@ -37,13 +37,13 @@ public class HoaDonChiTietService implements IFHoaDonChiTiet {
     }
 
     @Override
-    public boolean update(HoaDonChiTiet chiTiet, String idGHCT) {
-        return chiTietRepo.update(chiTiet, idGHCT);
+    public boolean update(HoaDonChiTiet chiTiet, String idHDCT) {
+        return chiTietRepo.update(chiTiet, idHDCT);
     }
 
     @Override
-    public boolean delete(String idGHCT) {
-        return chiTietRepo.delete(idGHCT);
+    public boolean delete(String idHDCT) {
+        return chiTietRepo.delete(idHDCT);
     }
 
 }

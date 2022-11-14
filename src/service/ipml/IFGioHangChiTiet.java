@@ -20,4 +20,6 @@ public interface IFGioHangChiTiet {
     public boolean update(GioHangChiTiet chiTiet, String idGHCT);
 
     public boolean delete(String idGHCT);
+    
+    List<GioHangChiTiet> timKiem(String timChuoi, int so);
 }

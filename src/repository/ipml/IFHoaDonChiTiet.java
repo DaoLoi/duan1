@@ -17,7 +17,7 @@ public interface IFHoaDonChiTiet {
 
     public boolean add(HoaDonChiTiet chiTiet);
 
-    public boolean update(HoaDonChiTiet chiTiet, String idGHCT);
+    public boolean update(HoaDonChiTiet chiTiet, String idHDCT);
 
-    public boolean delete(String idGHCT);
+    public boolean delete(String idHDCT);
 }
