@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import model.DangNhap;
-import service.DangNhapService;
-import service.ipml.DangNhapServiceImpl;
+import service.ipml.DangNhapService;
+import service.DangNhapServiceImpl;
 
 /**
  *
