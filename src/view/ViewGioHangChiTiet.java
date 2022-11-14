@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Dell
  */
 public class ViewGioHangChiTiet extends javax.swing.JFrame {
-
+    
     private GioHangChiTietService chiTietService;
     private DefaultTableModel dtm;
 
@@ -78,7 +78,11 @@ public class ViewGioHangChiTiet extends javax.swing.JFrame {
 
         jLabel2.setText("IdGH");
 
+        txtGH.setEditable(false);
+
         jLabel3.setText("IdCTSP");
+
+        txtCTSP.setEditable(false);
 
         jLabel4.setText("Số Lượng");
 
@@ -91,6 +95,7 @@ public class ViewGioHangChiTiet extends javax.swing.JFrame {
         jLabel8.setText("Trạng Thái");
 
         buttonGroup1.add(rdoDaThanhToan);
+        rdoDaThanhToan.setSelected(true);
         rdoDaThanhToan.setText("Đã Thanh Toán");
 
         buttonGroup1.add(rdoChuaThanhToan);
@@ -307,6 +312,18 @@ public class ViewGioHangChiTiet extends javax.swing.JFrame {
         GioHangChiTiet chiTiet = new GioHangChiTiet();
         if (txtSoLuong.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Trống số lượng");
+            return;
+        }
+        if (txtDonGia.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Trống đơn giá");
+            return;
+        }
+        if (txtNgayLap.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Trống ngày lập");
+            return;
+        }
+        if (txtNgaySua.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Trống ngày sửa");
             return;
         }
         chiTiet.setSoLuong(Integer.valueOf(txtSoLuong.getText()));
