@@ -22,12 +22,19 @@ import utilities.SQLSeverConnection;
  */
 public class LoaiSPRepo implements IFLoaiSP {
 
+    public static void main(String[] args) {
+        List<LoaiSanPham> list = new LoaiSPRepo().getLSP();
+        for (LoaiSanPham loaiSanPham : list) {
+            System.out.println(loaiSanPham.toString());
+        }
+    }
+
     @Override
     public List<LoaiSanPham> getLSP() {
         try {
             List<LoaiSanPham> list = new ArrayList<>();
             Connection con = SQLSeverConnection.getConnection();
-            String sql = "select IDLSP,TENLSP,NGAYLAP,NGAYSUA,TRANGTHAI from LoaiSanPham";
+            String sql = "select IDLSP,TENLSP,NGAYLAP,NGAYSUA,TRANGTHAI from LOAISANPHAM";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -38,7 +45,8 @@ public class LoaiSPRepo implements IFLoaiSP {
                         rs.getInt("TRANGTHAI")
                 ));
             }
-            
+            return list;
+
         } catch (SQLException ex) {
             Logger.getLogger(LoaiSPRepo.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -49,7 +57,7 @@ public class LoaiSPRepo implements IFLoaiSP {
     public void add(LoaiSanPham list) {
         try {
             Connection con = SQLSeverConnection.getConnection();
-            String sql = "INSERT INTO LOAISANPHAM(TENLSP,NGAYLAP,NGAYSUA,TRANGTHAI) VALUES (?,?,?,?,?) ";
+            String sql = "INSERT INTO LOAISANPHAM(TENLSP,NGAYLAP,NGAYSUA,TRANGTHAI) VALUES (?,?,?,?) ";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, list.getTenlsp());
             ps.setString(2, list.getNgaylap());
@@ -62,7 +70,21 @@ public class LoaiSPRepo implements IFLoaiSP {
     }
 
     @Override
-    public void sua(LoaiSanPham lsp) {
+    public void xoa(String idlsp) {
+        try {
+            Connection con = SQLSeverConnection.getConnection();
+            String sql = "DELETE FROM [dbo].[LOAISANPHAM]\n"
+                    + "      WHERE [IDLSP] = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, idlsp);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(LoaiSPRepo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void sua(LoaiSanPham lsp, String idlsp) {
         try {
             Connection con = SQLSeverConnection.getConnection();
             String sql = "UPDATE [dbo].[LOAISANPHAM]\n"
@@ -77,24 +99,11 @@ public class LoaiSPRepo implements IFLoaiSP {
             ps.setString(2, lsp.getNgaylap());
             ps.setString(3, lsp.getNgaysua());
             ps.setInt(4, lsp.getTrangthai());
-            ps.setString(5, lsp.getIdsp());
+            ps.setString(5, idlsp);
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(LoaiSPRepo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    @Override
-    public void xoa(String idlsp) {
-        try {
-            Connection con = SQLSeverConnection.getConnection();
-            String sql = "DELETE FROM [dbo].[LOAISANPHAM]\n"
-                    + "      WHERE [IDSLP] = ?";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setString(1, idlsp);
-            ps.executeUpdate();
-        } catch (SQLException ex) {
-            Logger.getLogger(LoaiSPRepo.class.getName()).log(Level.SEVERE, null, ex);
-        }
- }
 }

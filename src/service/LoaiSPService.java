@@ -21,7 +21,7 @@ import service.ipml.IFLoaiSP;
  */
 public class LoaiSPService implements IFLoaiSP {
 
-    private LoaiSPRepo lsprepo = new LoaiSPRepo();
+    private final LoaiSPRepo lsprepo = new LoaiSPRepo();
 
     public List<LoaiSanPham> getLSP() {
         try {
@@ -38,8 +38,8 @@ public class LoaiSPService implements IFLoaiSP {
     }
 
     @Override
-    public void sua(LoaiSanPham lsp) {
-        lsprepo.sua(lsp);
+    public void sua(LoaiSanPham lsp,String idlsp) {
+        lsprepo.sua(lsp,idlsp);
     }
 
     @Override

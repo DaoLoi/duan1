@@ -4,6 +4,7 @@
  */
 package view;
 
+import java.util.ArrayList;
 import model.LoaiSanPham;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -77,6 +78,7 @@ public class ViewLoaiSP extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -123,8 +125,10 @@ public class ViewLoaiSP extends javax.swing.JFrame {
 
         jLabel6.setText("Trạng thái");
 
+        buttonGroup1.add(rbbok);
         rbbok.setText("ok");
 
+        buttonGroup1.add(rbbnotok);
         rbbnotok.setText("not ok");
 
         jButton1.setText("Thêm");
@@ -145,11 +149,26 @@ public class ViewLoaiSP extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblsp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblspMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(tblsp);
 
         jButton2.setText("Sửa");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Xoá");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -244,6 +263,53 @@ public class ViewLoaiSP extends javax.swing.JFrame {
         loadTB();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        LoaiSanPham lsp = new LoaiSanPham();
+        lsp.setTenlsp(txtten.getText());
+        lsp.setNgaylap(txtngaylap.getText());
+        lsp.setNgaysua(txtngaysua.getText());
+        if(rbbok.isSelected()){
+            lsp.setTrangthai(1);
+        }else if(rbbnotok.isSelected()){
+            lsp.setTrangthai(2);
+        }
+        String idlsp = txtid.getText();
+        service.sua(lsp, idlsp);
+        loadTB();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void tblspMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblspMouseClicked
+        // TODO add your handling code here:
+        int index = tblsp.getSelectedRow();
+        List<LoaiSanPham> list = service.getLSP();
+        LoaiSanPham lsp = list.get(index);
+        txtid.setText(lsp.getIdsp());
+        txtten.setText(lsp.getTenlsp());
+        txtngaylap.setText(lsp.getNgaylap());
+        txtngaysua.setText(lsp.getNgaysua());
+        if(lsp.getTrangthai() == 1){
+            rbbok.setSelected(true);
+        }else{
+            rbbnotok.setSelected(true);
+        }
+    }//GEN-LAST:event_tblspMouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        int index = tblsp.getSelectedColumn();
+        if(index == -1){
+            JOptionPane.showMessageDialog(this, "Chọn cái cần xoá");
+            return;
+        }
+//        List<LoaiSanPham> list = service.getLSP();
+//        LoaiSanPham lsp = list.get(index);
+        String idlsp = txtid.getText();
+        service.xoa(idlsp);
+        loadTB();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -281,6 +347,7 @@ public class ViewLoaiSP extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;

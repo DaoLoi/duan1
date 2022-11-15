@@ -16,6 +16,8 @@ public interface IFLoaiSP {
     List<LoaiSanPham> getLSP();
 
     public void add(LoaiSanPham list);
-    public void sua(LoaiSanPham lsp);
+
+    public void sua(LoaiSanPham lsp, String idlsp);
+
     public void xoa(String idlsp);
 }
