@@ -4,32 +4,47 @@
  */
 package service;
 
+import java.sql.SQLException;
 import model.LoaiSanPham;
 import java.util.List;
 import repository.LoaiSPRepo;
-import service.ipml.IFLoaiSPService;
 import model.LoaiSanPham;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import repository.LoaiSPRepo;
-import service.ipml.IFLoaiSPService;
+import service.ipml.IFLoaiSP;
 
 /**
  *
  * @author VU TUAN
  */
-public class LoaiSPService implements IFLoaiSPService{
+public class LoaiSPService implements IFLoaiSP {
+
     private LoaiSPRepo lsprepo = new LoaiSPRepo();
-    public List<LoaiSanPham> getLSP(){
+
+    public List<LoaiSanPham> getLSP() {
         try {
-            return  lsprepo.getLSP();
+            return lsprepo.getLSP();
         } catch (Exception e) {
-            
+
         }
         return null;
     }
 
     @Override
     public void add(LoaiSanPham list) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        lsprepo.add(list);
     }
+
+    @Override
+    public void sua(LoaiSanPham lsp) {
+        lsprepo.sua(lsp);
+    }
+
+    @Override
+    public void xoa(String idlsp) {
+        lsprepo.xoa(idlsp);
+    }
+
 }

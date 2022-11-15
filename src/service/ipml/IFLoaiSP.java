@@ -11,8 +11,13 @@ import java.util.List;
  *
  * @author VU TUAN
  */
-public interface IFLoaiSPService {
+public interface IFLoaiSP {
+
     List<LoaiSanPham> getLSP();
+
     public void add(LoaiSanPham list);
-    
+
+    public void sua(LoaiSanPham lsp);
+
+    public void xoa(String idlsp);
 }

@@ -6,10 +6,11 @@ package view;
 
 import model.LoaiSanPham;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import service.LoaiSPService;
-import repository.ipml.IFLoaiSPService;
+import repository.ipml.IFLoaiSP;
 
 /**
  *
@@ -50,6 +51,20 @@ public class ViewLoaiSP extends javax.swing.JFrame {
             });
         }
     }
+//    private boolean checkAdd() {
+//        String ten = txtten.getText();
+//        String ngayLap = txtngaylap.getText();
+//        String ngaySua = txtngaysua.getText();
+//        if(rbbok.isSelected()){
+//            
+//        }
+//        if (ten.equals("") || ngayLap.equals("") || ngaySua.equals("") || .equals("")) {
+//            JOptionPane.showMessageDialog(this, "khong duoc de trong");
+//            return false;
+//        } else {
+//            return true;
+//        }
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -77,6 +92,8 @@ public class ViewLoaiSP extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblsp = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -111,6 +128,11 @@ public class ViewLoaiSP extends javax.swing.JFrame {
         rbbnotok.setText("not ok");
 
         jButton1.setText("Thêm");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         tblsp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -124,6 +146,10 @@ public class ViewLoaiSP extends javax.swing.JFrame {
             }
         ));
         jScrollPane3.setViewportView(tblsp);
+
+        jButton2.setText("Sửa");
+
+        jButton3.setText("Xoá");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -156,7 +182,10 @@ public class ViewLoaiSP extends javax.swing.JFrame {
                                     .addComponent(txtngaylap)
                                     .addComponent(txtngaysua, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -176,11 +205,13 @@ public class ViewLoaiSP extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtten, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtngaylap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtngaylap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -197,6 +228,21 @@ public class ViewLoaiSP extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        LoaiSanPham lsp = new LoaiSanPham();
+        lsp.setTenlsp(txtten.getText());
+        lsp.setNgaylap(txtngaylap.getText());
+        lsp.setNgaysua(txtngaysua.getText());
+        if(rbbok.isSelected()){
+            lsp.setTrangthai(1);
+        }else if(rbbnotok.isSelected()){
+            lsp.setTrangthai(2);
+        }
+        service.add(lsp);
+        loadTB();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -236,6 +282,8 @@ public class ViewLoaiSP extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
