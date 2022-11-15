@@ -6,7 +6,7 @@ package repository;
 
 import java.util.ArrayList;
 import java.util.List;
-import model.DangNhap;
+import viewModel.DangNhap;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -43,10 +43,11 @@ public class DangNhapRepo implements IFDangNhap{
             return dns;
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("loi");
+            System.out.println("lỗi");
         }
         
         return null;
     }
+    
     
 }

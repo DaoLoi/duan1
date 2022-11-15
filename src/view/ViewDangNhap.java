@@ -7,16 +7,17 @@ package view;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import model.DangNhap;
-import service.ipml.DangNhapService;
-import service.DangNhapServiceImpl;
+import viewModel.DangNhap;
+import service.DangNhapService;
+import service.ipml.DangNhapServiceImpl;
 
 /**
  *
  * @author PC
  */
 public class ViewDangNhap extends javax.swing.JFrame {
-    private DangNhapService service =new DangNhapServiceImpl();
+
+    private DangNhapService service = new DangNhapServiceImpl();
     List<DangNhap> dns = new ArrayList<>();
 
     /**
@@ -24,7 +25,7 @@ public class ViewDangNhap extends javax.swing.JFrame {
      */
     public ViewDangNhap() {
         initComponents();
-        
+
         dns = service.getAll();
     }
 
@@ -117,11 +118,13 @@ public class ViewDangNhap extends javax.swing.JFrame {
             }
             if (dn.getTenDN().equals(txtTaiKhoan.getText())) {
                 if (dn.getMatKhau().equals(new String().valueOf(txtPass.getPassword()))) {
-                    JOptionPane.showMessageDialog(this, "thanh cong");
+                    new viewChiTietSanPham().setVisible(true);
                     this.dispose();
-		
+                    return;
+
                 } else {
                     JOptionPane.showMessageDialog(this, "Ban da nhap sai mat khau moi nhap lai");
+
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "Sai tai khoan");

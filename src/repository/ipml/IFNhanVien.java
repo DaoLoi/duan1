@@ -5,12 +5,15 @@
 package repository.ipml;
 
 import java.util.List;
-import viewModel.DangNhap;
+import model.NhanVien;
 
 /**
  *
  * @author PC
  */
-public interface IFDangNhap {
-    List<DangNhap> getAll();
+public interface IFNhanVien {
+    List<NhanVien> getAll();
+    boolean add(NhanVien nv);
+    boolean update(NhanVien nv, String idNV);
+    boolean delete(String idNV);
 }
