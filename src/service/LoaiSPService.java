@@ -27,7 +27,7 @@ public class LoaiSPService implements IFLoaiSP {
         try {
             return lsprepo.getLSP();
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
         return null;
     }
