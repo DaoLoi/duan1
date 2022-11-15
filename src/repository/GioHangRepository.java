@@ -52,7 +52,7 @@ public class GioHangRepository implements IFGioHang{
 
     @Override
     public boolean add(GioHang gioHang) {
-    String sql = "INSERT INTO GIOHANG(NGAYLAP,NGAYSUA,TRANGTHAI)values(?,?,?,?)";
+    String sql = "INSERT INTO GIOHANG(NGAYLAP,NGAYSUA,TRANGTHAI)values(?,?,?)";
     try ( Connection con = SQLSeverConnection.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setString(1, gioHang.getNgayLap());
             ps.setString(2, gioHang.getNgaySua());
