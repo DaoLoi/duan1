@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package service;
+package service.ipml;
 
 import java.util.List;
 import viewModel.DangNhap;
@@ -11,7 +11,7 @@ import viewModel.DangNhap;
  *
  * @author PC
  */
-public interface DangNhapService {
+public interface IFDangNhapService {
     List<DangNhap> getAll();
     
 }

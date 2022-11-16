@@ -9,8 +9,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.NhanVien;
-import service.NhanVienService;
-import service.ipml.NhanVienServiceImpl;
+import service.NhanVienServiceImpl;
+import service.ipml.IFNhanVienService;
 
 
 /**
@@ -20,7 +20,7 @@ import service.ipml.NhanVienServiceImpl;
 public class nhanVienView extends javax.swing.JFrame {
     
     DefaultTableModel model = new DefaultTableModel();
-    NhanVienService service = new NhanVienServiceImpl();
+    IFNhanVienService service = new NhanVienServiceImpl();
     
     
     /**

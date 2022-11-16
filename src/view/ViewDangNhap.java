@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import viewModel.DangNhap;
-import service.DangNhapService;
-import service.ipml.DangNhapServiceImpl;
+import service.DangNhapServiceImpl;
+import service.ipml.IFDangNhapService;
 
 /**
  *
@@ -17,7 +17,7 @@ import service.ipml.DangNhapServiceImpl;
  */
 public class ViewDangNhap extends javax.swing.JFrame {
 
-    private DangNhapService service = new DangNhapServiceImpl();
+    private IFDangNhapService service = new DangNhapServiceImpl();
     List<DangNhap> dns = new ArrayList<>();
 
     /**
@@ -118,7 +118,7 @@ public class ViewDangNhap extends javax.swing.JFrame {
             }
             if (dn.getTenDN().equals(txtTaiKhoan.getText())) {
                 if (dn.getMatKhau().equals(new String().valueOf(txtPass.getPassword()))) {
-                    new viewChiTietSanPham().setVisible(true);
+                    JOptionPane.showMessageDialog(this, "Sai tai khoan");
                     this.dispose();
                     return;
 
