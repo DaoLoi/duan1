@@ -55,7 +55,7 @@ public class NCCRepository implements IFNCCRepository {
                 + "           ,[NGAYSUA]\n"
                 + "           ,[TRANGTHAI])\n"
                 + "     VALUES\n"
-                + "           (?,?,?,?,?,?)";
+                + "           (?,?,?,?,?,?,)";
 
         try ( Connection con = SQLSeverConnection.getConnection();  PreparedStatement ps = con.prepareStatement(query)) {
             ps.setObject(1, ncc.getTenNCC());
