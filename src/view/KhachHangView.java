@@ -288,11 +288,11 @@ public class KhachHangView extends javax.swing.JFrame {
         txtNgaylap.setText(khachHang.getNgayLap());
         txtNgaysua.setText(khachHang.getNgaySua());
         if (khachHang.getTrangThai() == 1) {
-            rdoHd.setSelected(false);
-            rdoDk.setSelected(true);
-        } else {
             rdoHd.setSelected(true);
             rdoDk.setSelected(false);
+        } else {
+            rdoHd.setSelected(false);
+            rdoDk.setSelected(true);
         }
     }//GEN-LAST:event_tblRowMouseClicked
 
