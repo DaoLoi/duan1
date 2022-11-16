@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Dell
  */
 public class ViewGioHangChiTiet extends javax.swing.JFrame {
-    
+
     private GioHangChiTietService chiTietService;
     private DefaultTableModel dtm;
 
@@ -427,9 +427,10 @@ public class ViewGioHangChiTiet extends javax.swing.JFrame {
     private void btnTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTKActionPerformed
         // TODO add your handling code here:
         String timChuoi = txtTK.getText();
-        int  timSo = Integer.valueOf(txtTK.getText());
+        int timSo = Integer.valueOf(txtTK.getText());
         showData(chiTietService.timKiem(timChuoi, timSo));
     }//GEN-LAST:event_btnTKActionPerformed
+
     public void showData(List<GioHangChiTiet> chiTiets) {
         dtm.setRowCount(0);
         for (GioHangChiTiet ct : chiTiets) {
