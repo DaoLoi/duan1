@@ -17,7 +17,7 @@ import service.ipml.IFNCCService;
  * @author LOIDEPTRAI
  */
 public class viewNhaCungCap extends javax.swing.JFrame {
-    
+
     private List<NhaCungCap> list = new ArrayList<>();
     private DefaultTableModel dtm = new DefaultTableModel();
     private IFNCCService incc = new NhaCungCapService();
@@ -39,6 +39,12 @@ public class viewNhaCungCap extends javax.swing.JFrame {
         for (NhaCungCap x : list) {
             dtm.addRow(x.toRowData());
         }
+    }
+
+    private void loadDl() {
+        list = incc.getAll();
+        dtm = (DefaultTableModel) tbNCC.getModel();
+        showData();
     }
 
     /**
@@ -91,6 +97,11 @@ public class viewNhaCungCap extends javax.swing.JFrame {
         });
 
         btnEdit.setText("sua");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("xoa");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -227,31 +238,61 @@ public class viewNhaCungCap extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-JOptionPane.showMessageDialog(this, txtName);
+       NhaCungCap ncc = new NhaCungCap();
+       ncc.setIdNcc(txtID.getText());
+       ncc.setTenNCC(txtName.getText());
+       ncc.setDiaChi(txtDiaChi.getText());
+       ncc.setSdt(txtSDT.getText());
+       ncc.setNgayLap(txtNgayLap.getText());
+       ncc.setNgaySua(txtNgaySua.getText());
+        if (rbtHopTac.isSelected()) {
+            ncc.setTrangThai(1);
+        }else{
+            ncc.setTrangThai(0);
+        }
+        JOptionPane.showMessageDialog(this, incc.insert(ncc));
+        loadDl();
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         String id = txtID.getText();
-        JOptionPane.showMessageDialog(this,incc.delete(id));
+        JOptionPane.showMessageDialog(this, incc.delete(id));
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void tbNCCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbNCCMouseClicked
         int row = tbNCC.getSelectedRow();
         List<NhaCungCap> listn = incc.getAll();
         NhaCungCap nhacc = listn.get(row);
-        txtID.setText(tbNCC.getValueAt(row,1).toString());
-        txtName.setText(tbNCC.getValueAt(row,2).toString());
-        txtDiaChi.setText(tbNCC.getValueAt(row,3).toString());
-        txtSDT.setText(tbNCC.getValueAt(row,4).toString());
-        txtNgayLap.setText(tbNCC.getValueAt(row,5).toString());
-        txtNgaySua.setText(tbNCC.getValueAt(row,6).toString());
+        txtID.setText(tbNCC.getValueAt(row, 0).toString());
+        txtName.setText(tbNCC.getValueAt(row,1).toString());
+        txtDiaChi.setText(tbNCC.getValueAt(row, 2).toString());
+        txtSDT.setText(tbNCC.getValueAt(row, 3).toString());
+        txtNgayLap.setText(tbNCC.getValueAt(row, 4).toString());
+        txtNgaySua.setText(tbNCC.getValueAt(row, 5).toString());
         if (nhacc.getTrangThai() == 1) {
             rbtHopTac.setSelected(true);
-        }else{
+        } else {
             rbtHopTac.setSelected(false);
         }
     }//GEN-LAST:event_tbNCCMouseClicked
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+               NhaCungCap ncc = new NhaCungCap();
+       ncc.setIdNcc(txtID.getText());
+       ncc.setTenNCC(txtName.getText());
+       ncc.setDiaChi(txtDiaChi.getText());
+       ncc.setSdt(txtSDT.getText());
+       ncc.setNgayLap(txtNgayLap.getText());
+       ncc.setNgaySua(txtNgaySua.getText());
+        if (rbtHopTac.isSelected()) {
+            ncc.setTrangThai(1);
+        }else{
+            ncc.setTrangThai(0);
+        }
+        JOptionPane.showMessageDialog(this,incc.update(ncc));
+        loadDl();
+    }//GEN-LAST:event_btnEditActionPerformed
 
     /**
      * @param args the command line arguments
