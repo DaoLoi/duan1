@@ -17,7 +17,7 @@ import service.ipml.IFNCCService;
  * @author LOIDEPTRAI
  */
 public class viewNhaCungCap extends javax.swing.JFrame {
-    
+
     private List<NhaCungCap> list = new ArrayList<>();
     private DefaultTableModel dtm = new DefaultTableModel();
     private IFNCCService incc = new NhaCungCapService();
@@ -38,6 +38,22 @@ public class viewNhaCungCap extends javax.swing.JFrame {
         dtm.setRowCount(0);
         for (NhaCungCap x : list) {
             dtm.addRow(x.toRowData());
+        }
+    }
+
+    private void loadDL() {
+        list = incc.getAll();
+        dtm = (DefaultTableModel) tbNCC.getModel();
+        showData();
+    }
+
+    private boolean checkValidate() {
+
+        if (txtName.getText().equals("") || txtDiaChi.getText().equals("") || txtSDT.getText().equals("") || txtNgayLap.getText().equals("") || txtNgaySua.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "khong duoc de trong");
+            return false;
+        } else {
+            return true;
         }
     }
 
@@ -91,6 +107,11 @@ public class viewNhaCungCap extends javax.swing.JFrame {
         });
 
         btnEdit.setText("sua");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("xoa");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -137,17 +158,10 @@ public class viewNhaCungCap extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnAdd)
                         .addGap(27, 27, 27)
@@ -156,11 +170,17 @@ public class viewNhaCungCap extends javax.swing.JFrame {
                         .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(48, 48, 48))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(26, 26, 26)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(txtNgaySua, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -175,7 +195,10 @@ public class viewNhaCungCap extends javax.swing.JFrame {
                                 .addComponent(rbtHopTac, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(rbtKhongHopTac)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -186,16 +209,16 @@ public class viewNhaCungCap extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1)
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel2))
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
-                        .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtSDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -218,40 +241,78 @@ public class viewNhaCungCap extends javax.swing.JFrame {
                     .addComponent(btnAdd)
                     .addComponent(btnEdit)
                     .addComponent(btnDelete))
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addGap(18, 18, 18))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//NhaCungCap ncc(){
+//    return new NhaCungCap(txtID.getText(), txtName.getText(),txtDiaChi.getText(), txtSDT.getText(),txtNgayLap.getText(),txtNgaySua.getText(),)
+//}
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-JOptionPane.showMessageDialog(this, txtName);
+        NhaCungCap ncc = new NhaCungCap();
+        ncc.setIdNcc(txtID.getText());
+        ncc.setTenNCC(txtName.getText());
+        ncc.setDiaChi(txtDiaChi.getText());
+        ncc.setSdt(txtSDT.getText());
+        ncc.setNgayLap(txtNgayLap.getText());
+        ncc.setNgaySua(txtNgaySua.getText());
+        if (rbtHopTac.isSelected()) {
+            ncc.setTrangThai(1);
+        } else {
+            ncc.setTrangThai(0);
+        }
+        if (checkValidate()) {
+            JOptionPane.showMessageDialog(this, incc.insert(ncc));
+            loadDL();
+        }
+        
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
         String id = txtID.getText();
-        JOptionPane.showMessageDialog(this,incc.delete(id));
+        JOptionPane.showMessageDialog(this, incc.delete(id));
+        loadDL();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void tbNCCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbNCCMouseClicked
         int row = tbNCC.getSelectedRow();
         List<NhaCungCap> listn = incc.getAll();
         NhaCungCap nhacc = listn.get(row);
-        txtID.setText(tbNCC.getValueAt(row,1).toString());
-        txtName.setText(tbNCC.getValueAt(row,2).toString());
-        txtDiaChi.setText(tbNCC.getValueAt(row,3).toString());
-        txtSDT.setText(tbNCC.getValueAt(row,4).toString());
-        txtNgayLap.setText(tbNCC.getValueAt(row,5).toString());
-        txtNgaySua.setText(tbNCC.getValueAt(row,6).toString());
+        txtID.setText(tbNCC.getValueAt(row, 0).toString());
+        txtName.setText(tbNCC.getValueAt(row, 1).toString());
+        txtDiaChi.setText(tbNCC.getValueAt(row, 2).toString());
+        txtSDT.setText(tbNCC.getValueAt(row, 3).toString());
+        txtNgayLap.setText(tbNCC.getValueAt(row, 4).toString());
+        txtNgaySua.setText(tbNCC.getValueAt(row, 5).toString());
         if (nhacc.getTrangThai() == 1) {
             rbtHopTac.setSelected(true);
-        }else{
-            rbtHopTac.setSelected(false);
+        } else {
+            rbtKhongHopTac.setSelected(true);
         }
     }//GEN-LAST:event_tbNCCMouseClicked
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        NhaCungCap ncc = new NhaCungCap();
+        ncc.setIdNcc(txtID.getText());
+        ncc.setTenNCC(txtName.getText());
+        ncc.setDiaChi(txtDiaChi.getText());
+        ncc.setSdt(txtSDT.getText());
+        ncc.setNgayLap(txtNgayLap.getText());
+        ncc.setNgaySua(txtNgaySua.getText());
+        if (rbtHopTac.isSelected()) {
+            ncc.setTrangThai(1);
+        } else {
+            ncc.setTrangThai(0);
+        }
+        if (checkValidate()) {
+            JOptionPane.showMessageDialog(this,incc.update(ncc));
+            loadDL();
+        }
+    }//GEN-LAST:event_btnEditActionPerformed
 
     /**
      * @param args the command line arguments
