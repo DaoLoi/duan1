@@ -112,9 +112,7 @@ public class GioHangChiTietRepo implements IFGIoHangChiTiet {
     @Override
     public List<GioHangChiTiet> timKiem(String timChuoi, int so) {
         List<GioHangChiTiet> chiTiets = new ArrayList<>();
-        String sql = "select * from GIOHANGCHITIET where IDGHCT like N'%"+timChuoi+"%' or IDGH like'%"+timChuoi+"%'"
-                + "or IDCTSP like'%"+timChuoi+"%' or SOLUONG like '%"+so+"%' or DONGIA like N'%"+timChuoi+"%' "
-                + "or NGAYLAP like '%"+timChuoi+"%'or NGAYSUA like '%"+timChuoi+"%' or TRANGTHAI like "+so+"";
+        String sql = "select * from GIOHANGCHITIET where IDGHCT like '%"+timChuoi+"%'or SOLUONG like "+so+"";
         try {
             Connection con = SQLSeverConnection.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
