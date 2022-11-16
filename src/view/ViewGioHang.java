@@ -352,7 +352,14 @@ public class ViewGioHang extends javax.swing.JFrame {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
         GioHang gioHang = new GioHang();
-        
+        if (txtNgayLap.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Trống ngày lập");
+            return;
+        }
+        if (txtNgaySua.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Trống ngày sửa");
+            return;
+        }
 
         gioHang.setNgayLap(txtNgayLap.getText());
         gioHang.setNgaySua(txtNgaySua.getText());

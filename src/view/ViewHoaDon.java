@@ -351,7 +351,14 @@ public class ViewHoaDon extends javax.swing.JFrame {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
         HoaDon hoaDon = new HoaDon();
-        
+        if (txtNgayLap.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Trống ngày lập");
+            return;
+        }
+        if (txtNgaySua.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Trống ngày sửa");
+            return;
+        }
 
         hoaDon.setNgayLap(txtNgayLap.getText());
         hoaDon.setNgaySua(txtNgaySua.getText());
