@@ -107,15 +107,19 @@ public class ViewDangNhap extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
+        if (txtTaiKhoan.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ten dang nhap khong duoc bo trong");
+            return;
+        }
+        if (txtTaiKhoan.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Chua nhap mat khau");
+            return;
+        }
+        
+        
+        
         for (DangNhap dn : dns) {
-            if (txtTaiKhoan.getText().trim().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Ten dang nhap khong duoc bo trong");
-                return;
-            }
-            if (txtTaiKhoan.getText().trim().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Chua nhap mat khau");
-                return;
-            }
+            
             if (dn.getTenDN().equals(txtTaiKhoan.getText())) {
                 if (dn.getMatKhau().equals(new String().valueOf(txtPass.getPassword()))) {
                     JOptionPane.showMessageDialog(this, "Sai tai khoan");
