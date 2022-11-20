@@ -9,7 +9,7 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import viewModel.DangNhap;
 import service.DangNhapServiceImpl;
-import service.ipml.IFDangNhapService;
+
 
 /**
  *
@@ -17,16 +17,36 @@ import service.ipml.IFDangNhapService;
  */
 public class ViewDangNhap extends javax.swing.JFrame {
 
-    private IFDangNhapService service = new DangNhapServiceImpl();
-    List<DangNhap> dns = new ArrayList<>();
-
+    private DangNhapServiceImpl dangNhapService = new DangNhapServiceImpl();
+    int n =1;
+    
     /**
      * Creates new form ViewDangNhap
      */
+    public void dangNhap(List<DangNhap> dns) {
+        
+        for (DangNhap dn : dns) {
+            Object[] row = new Object[]{
+                dn.getTenDN(), dn.getMatKhau(), dn.getChucVu()
+            };
+            JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
+            if(dn.getChucVu().equals("Nhân Viên")){
+                ViewHoaDon hd = new ViewHoaDon();
+                hd.setVisible(true);
+                setVisible(false);
+            } else{
+                nhanVienView nv = new nhanVienView();
+                nv.setVisible(true);
+                setVisible(false);
+            }
+            n=2;    
+            
+        }
+    }
     public ViewDangNhap() {
         initComponents();
 
-        dns = service.getAll();
+        
     }
 
     /**
@@ -47,13 +67,13 @@ public class ViewDangNhap extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Dang Nhap");
+        jLabel1.setText("Đăng nhập");
 
-        jLabel2.setText("Tai khoan");
+        jLabel2.setText("Tài khoản");
 
-        jLabel3.setText("Mat khau");
+        jLabel3.setText("Mật khẩu");
 
-        btnLogin.setText("Dang nhap");
+        btnLogin.setText("Đăng nhập");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
@@ -82,7 +102,7 @@ public class ViewDangNhap extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(134, 134, 134)
                         .addComponent(btnLogin)))
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addContainerGap(169, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,31 +128,18 @@ public class ViewDangNhap extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
         if (txtTaiKhoan.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ten dang nhap khong duoc bo trong");
+            JOptionPane.showMessageDialog(this, "Tên đăng nhập không được bỏ trống");
             return;
         }
-        if (txtTaiKhoan.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Chua nhap mat khau");
+        if (txtPass.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Chưa nhập mật khẩu");
             return;
         }
-        
-        
-        
-        for (DangNhap dn : dns) {
-            
-            if (dn.getTenDN().equals(txtTaiKhoan.getText())) {
-                if (dn.getMatKhau().equals(new String().valueOf(txtPass.getPassword()))) {
-                    JOptionPane.showMessageDialog(this, "Sai tai khoan");
-                    this.dispose();
-                    return;
-
-                } else {
-                    JOptionPane.showMessageDialog(this, "Ban da nhap sai mat khau moi nhap lai");
-
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "Sai tai khoan");
-            }
+       
+            dangNhap(dangNhapService.kiemTraDN(txtTaiKhoan.getText(), new String().valueOf(txtPass.getPassword())));
+       
+        if(n==1){
+            JOptionPane.showMessageDialog(this, "Đăng nhập thất bại");
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 

@@ -16,9 +16,10 @@ import service.ipml.IFDangNhapService;
  */
 public class DangNhapServiceImpl implements IFDangNhapService{
     List<DangNhap> dns = new ArrayList<>();
+    
     @Override
-    public List<DangNhap> getAll() {
-        dns = new DangNhapRepo().getAll();
+    public List<DangNhap> kiemTraDN(String tenDN, String MK) {
+    dns = new DangNhapRepo().kiemTraDN(tenDN, MK);
         return dns;
     }
     

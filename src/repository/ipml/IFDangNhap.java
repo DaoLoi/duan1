@@ -12,5 +12,5 @@ import viewModel.DangNhap;
  * @author PC
  */
 public interface IFDangNhap {
-    List<DangNhap> getAll();
+    List<DangNhap> kiemTraDN(String tenDN, String MK);
 }
