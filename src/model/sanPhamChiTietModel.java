@@ -4,36 +4,40 @@
  */
 package model;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author PC
  */
-public class sanPhamChiTiet {
+public class sanPhamChiTietModel {
     private String idctsp;
     private String idsp;
+    private String idMauSac;
+    private String idSize;
     private String idncc;
     private String idlsp;
-    private String ten;
-    private String size;
+    private BigDecimal giaNhap;
+    private BigDecimal giaBan;
     private String chatLieu;
-    private String donGia;
     private int slTon;
     private String ngayLap;
     private String ngaySua;
     private boolean trangThai;
 
-    public sanPhamChiTiet() {
+    public sanPhamChiTietModel() {
     }
 
-    public sanPhamChiTiet(String idctsp, String idsp, String idncc, String idlsp, String ten, String size, String chatLieu, String donGia, int slTon, String ngayLap, String ngaySua, boolean trangThai) {
+    public sanPhamChiTietModel(String idctsp, String idsp, String idMauSac, String idSize, String idncc, String idlsp, BigDecimal giaNhap, BigDecimal giaBan, String chatLieu, int slTon, String ngayLap, String ngaySua, boolean trangThai) {
         this.idctsp = idctsp;
         this.idsp = idsp;
+        this.idMauSac = idMauSac;
+        this.idSize = idSize;
         this.idncc = idncc;
         this.idlsp = idlsp;
-        this.ten = ten;
-        this.size = size;
+        this.giaNhap = giaNhap;
+        this.giaBan = giaBan;
         this.chatLieu = chatLieu;
-        this.donGia = donGia;
         this.slTon = slTon;
         this.ngayLap = ngayLap;
         this.ngaySua = ngaySua;
@@ -56,6 +60,22 @@ public class sanPhamChiTiet {
         this.idsp = idsp;
     }
 
+    public String getIdMauSac() {
+        return idMauSac;
+    }
+
+    public void setIdMauSac(String idMauSac) {
+        this.idMauSac = idMauSac;
+    }
+
+    public String getIdSize() {
+        return idSize;
+    }
+
+    public void setIdSize(String idSize) {
+        this.idSize = idSize;
+    }
+
     public String getIdncc() {
         return idncc;
     }
@@ -72,20 +92,20 @@ public class sanPhamChiTiet {
         this.idlsp = idlsp;
     }
 
-    public String getTen() {
-        return ten;
+    public BigDecimal getGiaNhap() {
+        return giaNhap;
     }
 
-    public void setTen(String ten) {
-        this.ten = ten;
+    public void setGiaNhap(BigDecimal giaNhap) {
+        this.giaNhap = giaNhap;
     }
 
-    public String getSize() {
-        return size;
+    public BigDecimal getGiaBan() {
+        return giaBan;
     }
 
-    public void setSize(String size) {
-        this.size = size;
+    public void setGiaBan(BigDecimal giaBan) {
+        this.giaBan = giaBan;
     }
 
     public String getChatLieu() {
@@ -94,14 +114,6 @@ public class sanPhamChiTiet {
 
     public void setChatLieu(String chatLieu) {
         this.chatLieu = chatLieu;
-    }
-
-    public String getDonGia() {
-        return donGia;
-    }
-
-    public void setDonGia(String donGia) {
-        this.donGia = donGia;
     }
 
     public int getSlTon() {
@@ -136,9 +148,5 @@ public class sanPhamChiTiet {
         this.trangThai = trangThai;
     }
 
-    
-    @Override
-    public String toString() {
-        return ten;
-    }
+
 }
