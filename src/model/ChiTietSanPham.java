@@ -13,7 +13,7 @@ public class ChiTietSanPham {
     private String idsp;
     private String idncc;
     private String idlsp;
-    private String idghct;
+
     private String size;
     private String chatLieu;
     private String donGia;
