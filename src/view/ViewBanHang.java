@@ -4,12 +4,19 @@
  */
 package view;
 
+import java.util.List;
+import javax.swing.DefaultListModel;
+import model.sanPhamChiTiet;
+import service.BanHangServiceImpl;
+
 /**
  *
  * @author PC
  */
 public class ViewBanHang extends javax.swing.JFrame {
-
+private DefaultListModel listModel = new DefaultListModel();
+ 
+private BanHangServiceImpl banHangService = new BanHangServiceImpl();
     /**
      * Creates new form ViewBanHang
      */
@@ -17,11 +24,16 @@ public class ViewBanHang extends javax.swing.JFrame {
         initComponents();
         
         menu.add(panel);
+        
+        list.setModel(listModel);
     }
 
     
-    public void loadListSanPham(){
-        
+    public void loadListSanPham(List<sanPhamChiTiet> spCTs){
+        listModel.removeAllElements();
+        for (sanPhamChiTiet spCT : spCTs) {
+            listModel.addElement(spCT.getTen());
+        }
     }
     
     
@@ -72,6 +84,8 @@ public class ViewBanHang extends javax.swing.JFrame {
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
         );
+
+        menu.setFocusable(false);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -273,7 +287,8 @@ public class ViewBanHang extends javax.swing.JFrame {
         // TODO add your handling code here:
         String timKiem = txtTimKiem.getText().trim();
         if(!timKiem.equals("")){
-            System.out.println(timKiem);
+            
+            loadListSanPham(banHangService.getChiTietSanPham(timKiem));
             menu.show(txtTimKiem, 0, txtTimKiem.getHeight());
         }
     }//GEN-LAST:event_txtTimKiemKeyReleased
