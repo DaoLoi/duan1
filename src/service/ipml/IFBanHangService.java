@@ -14,4 +14,6 @@ import model.sanPhamChiTiet;
  */
 public interface IFBanHangService {
     List<sanPhamChiTiet> getChiTietSanPham(String tenSP);
+    //String getMaGioHang(); 
+    
 }

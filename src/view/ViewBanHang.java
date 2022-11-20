@@ -32,7 +32,7 @@ private BanHangServiceImpl banHangService = new BanHangServiceImpl();
     public void loadListSanPham(List<sanPhamChiTiet> spCTs){
         listModel.removeAllElements();
         for (sanPhamChiTiet spCT : spCTs) {
-            listModel.addElement(spCT.getTen());
+            listModel.addElement(spCT);
         }
     }
     
@@ -72,6 +72,11 @@ private BanHangServiceImpl banHangService = new BanHangServiceImpl();
 
         jScrollPane3.setBorder(null);
 
+        list.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                listMousePressed(evt);
+            }
+        });
         jScrollPane3.setViewportView(list);
 
         javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
@@ -171,6 +176,11 @@ private BanHangServiceImpl banHangService = new BanHangServiceImpl();
         btnLuu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnLuu.setForeground(new java.awt.Color(255, 255, 255));
         btnLuu.setText("Lưu");
+        btnLuu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLuuActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -292,6 +302,20 @@ private BanHangServiceImpl banHangService = new BanHangServiceImpl();
             menu.show(txtTimKiem, 0, txtTimKiem.getHeight());
         }
     }//GEN-LAST:event_txtTimKiemKeyReleased
+
+    private void listMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listMousePressed
+        // TODO add your handling code here:
+//        if(!list.isSelectionEmpty()){
+//            sanPhamChiTiet spCT = (sanPhamChiTiet) listModel.getElementAt(list.getSelectedIndex());
+//            
+//        }
+    }//GEN-LAST:event_listMousePressed
+
+    private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_btnLuuActionPerformed
 
     /**
      * @param args the command line arguments

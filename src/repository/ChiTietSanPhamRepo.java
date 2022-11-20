@@ -21,7 +21,7 @@ public class ChiTietSanPhamRepo {
 
     public List<sanPhamChiTiet> timKiem(String tenSP) {
         List<sanPhamChiTiet> chiTiets = new ArrayList<>();
-        String sql = "SELECT [IDCTSP],[IDSP],[IDNCC],[IDLSP],[IDGHCT],[Ten],[SIZE],[CHATLIEU],[DONGIA],[SLTON],[NGAYLAP],[NGAYSUA],[TRANGTHAI]FROM [dbo].[CHITIETSANPHAM] WHERE Ten like N'%"+tenSP+"%'";
+        String sql = "SELECT [IDCTSP],[IDSP],[IDNCC],[IDLSP],[Ten],[SIZE],[CHATLIEU],[DONGIA],[SLTON],[NGAYLAP],[NGAYSUA],[TRANGTHAI]FROM [dbo].[CHITIETSANPHAM] WHERE Ten like N'%"+tenSP+"%'";
         try {
             Connection con = SQLSeverConnection.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
@@ -31,17 +31,16 @@ public class ChiTietSanPhamRepo {
                 String IDSP = rs.getString(2);
                 String IDNC = rs.getString(3);
                 String IDLSP = rs.getString(4);
-                String IDGHCT = rs.getString(5);
-                String Ten = rs.getString(6);
-                String SIZE = rs.getString(7);
-                String CHATLIEU = rs.getString(8);
-                String DONGIA = rs.getString(9);
-                int SLTON = rs.getInt(10);
-                String NGAYLAP = rs.getString(11);
-                String NGAYSUA = rs.getString(12);
-                Boolean TRANGTHAI = rs.getBoolean(13);
+                String Ten = rs.getString(5);
+                String SIZE = rs.getString(6);
+                String CHATLIEU = rs.getString(7);
+                String DONGIA = rs.getString(8);
+                int SLTON = rs.getInt(9);
+                String NGAYLAP = rs.getString(10);
+                String NGAYSUA = rs.getString(11);
+                Boolean TRANGTHAI = rs.getBoolean(12);
 
-                sanPhamChiTiet chiTiet = new sanPhamChiTiet(idCTSP, IDSP, IDNC, IDLSP, IDGHCT, Ten, SIZE, CHATLIEU, DONGIA, SLTON, NGAYLAP, NGAYSUA, TRANGTHAI);
+                sanPhamChiTiet chiTiet = new sanPhamChiTiet(idCTSP, IDSP, IDNC, IDLSP, Ten, SIZE, CHATLIEU, DONGIA, SLTON, NGAYLAP, NGAYSUA, TRANGTHAI);
 
                 chiTiets.add(chiTiet);
             }

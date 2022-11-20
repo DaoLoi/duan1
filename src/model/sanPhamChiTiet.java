@@ -13,7 +13,6 @@ public class sanPhamChiTiet {
     private String idsp;
     private String idncc;
     private String idlsp;
-    private String idghct;
     private String ten;
     private String size;
     private String chatLieu;
@@ -26,12 +25,11 @@ public class sanPhamChiTiet {
     public sanPhamChiTiet() {
     }
 
-    public sanPhamChiTiet(String idctsp, String idsp, String idncc, String idlsp, String idghct, String ten, String size, String chatLieu, String donGia, int slTon, String ngayLap, String ngaySua, boolean trangThai) {
+    public sanPhamChiTiet(String idctsp, String idsp, String idncc, String idlsp, String ten, String size, String chatLieu, String donGia, int slTon, String ngayLap, String ngaySua, boolean trangThai) {
         this.idctsp = idctsp;
         this.idsp = idsp;
         this.idncc = idncc;
         this.idlsp = idlsp;
-        this.idghct = idghct;
         this.ten = ten;
         this.size = size;
         this.chatLieu = chatLieu;
@@ -72,14 +70,6 @@ public class sanPhamChiTiet {
 
     public void setIdlsp(String idlsp) {
         this.idlsp = idlsp;
-    }
-
-    public String getIdghct() {
-        return idghct;
-    }
-
-    public void setIdghct(String idghct) {
-        this.idghct = idghct;
     }
 
     public String getTen() {
@@ -144,5 +134,11 @@ public class sanPhamChiTiet {
 
     public void setTrangThai(boolean trangThai) {
         this.trangThai = trangThai;
+    }
+
+    
+    @Override
+    public String toString() {
+        return ten;
     }
 }

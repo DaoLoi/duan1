@@ -148,6 +148,11 @@ public class ViewGioHang extends javax.swing.JFrame {
         jLabel4.setText("idNV");
 
         txtGH.setEditable(false);
+        txtGH.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtGHActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Ngày lập");
 
@@ -449,6 +454,10 @@ public class ViewGioHang extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void txtGHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGHActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtGHActionPerformed
 
     /**
      * @param args the command line arguments
