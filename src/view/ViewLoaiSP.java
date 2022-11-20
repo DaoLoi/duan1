@@ -29,6 +29,7 @@ public class ViewLoaiSP extends javax.swing.JFrame {
         initComponents();
         txtid.setEnabled(false);
         loadTB();
+        setDefaultCloseOperation(ViewLoaiSP.DISPOSE_ON_CLOSE);
     }
 
     public void loadTB() {
