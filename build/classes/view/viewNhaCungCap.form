@@ -27,63 +27,55 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace pref="19" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="334" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="49" pref="49" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="19" max="32767" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="334" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                      <Component id="jLabel4" min="-2" pref="37" max="-2" attributes="0"/>
+                      <Component id="jLabel2" min="-2" pref="37" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" pref="37" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="btnAdd" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <Component id="btnEdit" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnDelete" min="-2" pref="84" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="49" pref="49" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                              <Component id="jLabel4" min="-2" pref="37" max="-2" attributes="0"/>
-                              <Component id="jLabel2" min="-2" pref="37" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel7" alignment="0" min="-2" pref="48" max="-2" attributes="0"/>
+                          <Component id="jLabel3" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="jLabel8" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="txtNgaySua" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
+                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                  <Component id="txtID" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <Component id="txtName" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <Component id="txtSDT" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <Component id="txtDiaChi" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <Component id="txtNgayLap" min="-2" pref="160" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="btnAdd" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                              <Component id="btnEdit" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnDelete" min="-2" pref="84" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel7" alignment="0" min="-2" pref="48" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" min="-2" pref="37" max="-2" attributes="0"/>
-                                  <Component id="jLabel8" alignment="0" min="-2" pref="59" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="txtNgaySua" alignment="1" min="-2" pref="160" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                          <Component id="txtID" min="-2" pref="160" max="-2" attributes="0"/>
-                                          <Component id="txtName" min="-2" pref="160" max="-2" attributes="0"/>
-                                          <Component id="txtSDT" min="-2" pref="160" max="-2" attributes="0"/>
-                                          <Component id="txtDiaChi" min="-2" pref="160" max="-2" attributes="0"/>
-                                          <Component id="txtNgayLap" min="-2" pref="160" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="rbtHopTac" min="-2" pref="71" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="rbtKhongHopTac" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="btnThoat" min="-2" pref="49" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="rbtHopTac" min="-2" pref="71" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="rbtKhongHopTac" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -91,10 +83,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnThoat" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -133,7 +122,7 @@
                   <Component id="rbtHopTac" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="rbtKhongHopTac" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="36" max="32767" attributes="0"/>
+              <EmptySpace pref="37" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnAdd" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnEdit" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -266,14 +255,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="k hop tac"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnThoat">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="exit"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThoatActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

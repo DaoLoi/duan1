@@ -46,6 +46,28 @@ public class viewNhaCungCap extends javax.swing.JFrame {
         dtm = (DefaultTableModel) tbNCC.getModel();
         showData();
     }
+    private void valiDate(){
+        if(txtName.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Chua nhap ten");
+            return;
+        }
+        if(txtSDT.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Chua nhap SDT");
+            return;
+        }
+        if(txtDiaChi.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Chua nhap dia chi");
+            return;
+        }
+        if(txtNgayLap.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Chua nhap ngay lap");
+            return;
+        }
+        if(txtNgaySua.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Chua nhap ngay sua");
+            return;
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
