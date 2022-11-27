@@ -53,6 +53,22 @@ public class ViewLoaiSP extends javax.swing.JFrame {
             });
         }
     }
+    
+    private boolean valiDate(){
+        if(txtten.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Chua nhap ten");
+            return false;
+        }
+        if(txtngaylap.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Chua nhap ngay lap");
+            return false;
+        }
+        if(txtngaysua.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Chua nhap ngay sua");
+            return false;
+        }
+        return true;
+    }
 //    private boolean checkAdd() {
 //        String ten = txtten.getText();
 //        String ngayLap = txtngaylap.getText();
@@ -251,7 +267,8 @@ public class ViewLoaiSP extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        LoaiSanPham lsp = new LoaiSanPham();
+        if(valiDate() == true){
+            LoaiSanPham lsp = new LoaiSanPham();
         lsp.setTenlsp(txtten.getText());
         lsp.setNgaylap(txtngaylap.getText());
         lsp.setNgaysua(txtngaysua.getText());
@@ -262,6 +279,9 @@ public class ViewLoaiSP extends javax.swing.JFrame {
         }
         service.add(lsp);
         loadTB();
+        }
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
