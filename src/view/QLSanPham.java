@@ -405,7 +405,7 @@ public class QLSanPham extends javax.swing.JFrame {
 
     private void btnCTSizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCTSizeActionPerformed
         // TODO add your handling code here:
-        new ViewMauSac().setVisible(true);
+        new ViewSize().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnCTSizeActionPerformed
 
