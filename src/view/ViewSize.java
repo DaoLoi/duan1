@@ -24,6 +24,7 @@ public class ViewSize extends javax.swing.JFrame {
      */
     public ViewSize() {
         initComponents();
+        txtId.setEnabled(false);
         service = new SizeService();
         dtm = (DefaultTableModel) tblRow.getModel();
         String[] header = {"IdSize", "Tên Size"};

@@ -24,6 +24,7 @@ public class ViewMauSac extends javax.swing.JFrame {
      */
     public ViewMauSac() {
         initComponents();
+        txtId.setEnabled(false);
         dtm = (DefaultTableModel) tblRow.getModel();
         String[] header = {"IdMau", "Tên Màu Sắc"};
         dtm.setColumnIdentifiers(header);

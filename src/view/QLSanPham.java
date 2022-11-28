@@ -33,6 +33,7 @@ public class QLSanPham extends javax.swing.JFrame {
      */
     public QLSanPham() {
         initComponents();
+        txtIdSP.setEnabled(false);
         dtm = (DefaultTableModel) tblRow.getModel();
         String[] header = {"Mã SP", "Mã NCC", "Mã LSP", "Mã Mấuc", "Mã Size", "Tên SP",
             "Giá Nhập", "Giá Bán", "Chất Liệu", "SL Tồn", "Ngày Lập", "Ngày Sửa", "Trạng Thái",};

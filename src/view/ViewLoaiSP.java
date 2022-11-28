@@ -53,17 +53,17 @@ public class ViewLoaiSP extends javax.swing.JFrame {
             });
         }
     }
-    
-    private boolean valiDate(){
-        if(txtten.getText().isEmpty()){
+
+    private boolean valiDate() {
+        if (txtten.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Chua nhap ten");
             return false;
         }
-        if(txtngaylap.getText().isEmpty()){
+        if (txtngaylap.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Chua nhap ngay lap");
             return false;
         }
-        if(txtngaysua.getText().isEmpty()){
+        if (txtngaysua.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Chua nhap ngay sua");
             return false;
         }
@@ -113,6 +113,7 @@ public class ViewLoaiSP extends javax.swing.JFrame {
         tblsp = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -187,15 +188,23 @@ public class ViewLoaiSP extends javax.swing.JFrame {
             }
         });
 
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(13, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,17 +230,21 @@ public class ViewLoaiSP extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(56, 56, 56)
+                                .addComponent(jLabel1))
+                            .addComponent(btnBack))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 408, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addComponent(btnBack)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -263,37 +276,38 @@ public class ViewLoaiSP extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(valiDate() == true){
+        if (valiDate() == true) {
             LoaiSanPham lsp = new LoaiSanPham();
-        lsp.setTenlsp(txtten.getText());
-        lsp.setNgaylap(txtngaylap.getText());
-        lsp.setNgaysua(txtngaysua.getText());
-        if(rbbok.isSelected()){
-            lsp.setTrangthai(1);
-        }else if(rbbnotok.isSelected()){
-            lsp.setTrangthai(2);
+            lsp.setTenlsp(txtten.getText());
+            lsp.setNgaylap(txtngaylap.getText());
+            lsp.setNgaysua(txtngaysua.getText());
+            if (rbbok.isSelected()) {
+                lsp.setTrangthai(1);
+            } else if (rbbnotok.isSelected()) {
+                lsp.setTrangthai(2);
+            }
+            service.add(lsp);
+            loadTB();
         }
-        service.add(lsp);
-        loadTB();
-        }
-        
-        
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
+
         LoaiSanPham lsp = new LoaiSanPham();
         lsp.setTenlsp(txtten.getText());
         lsp.setNgaylap(txtngaylap.getText());
         lsp.setNgaysua(txtngaysua.getText());
-        if(rbbok.isSelected()){
+        if (rbbok.isSelected()) {
             lsp.setTrangthai(1);
-        }else if(rbbnotok.isSelected()){
+        } else if (rbbnotok.isSelected()) {
             lsp.setTrangthai(2);
         }
         String idlsp = txtid.getText();
@@ -310,9 +324,9 @@ public class ViewLoaiSP extends javax.swing.JFrame {
         txtten.setText(lsp.getTenlsp());
         txtngaylap.setText(lsp.getNgaylap());
         txtngaysua.setText(lsp.getNgaysua());
-        if(lsp.getTrangthai() == 1){
+        if (lsp.getTrangthai() == 1) {
             rbbok.setSelected(true);
-        }else{
+        } else {
             rbbnotok.setSelected(true);
         }
     }//GEN-LAST:event_tblspMouseClicked
@@ -320,7 +334,7 @@ public class ViewLoaiSP extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         int index = tblsp.getSelectedColumn();
-        if(index == -1){
+        if (index == -1) {
             JOptionPane.showMessageDialog(this, "Chọn cái cần xoá");
             return;
         }
@@ -330,6 +344,12 @@ public class ViewLoaiSP extends javax.swing.JFrame {
         service.xoa(idlsp);
         loadTB();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        new QLSanPham().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -368,6 +388,7 @@ public class ViewLoaiSP extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
