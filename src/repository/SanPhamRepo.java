@@ -19,11 +19,15 @@ import utilities.SQLSeverConnection;
  */
 public class SanPhamRepo implements IFSanPham {
 
-    @Override
+   @Override
     public List<SanPham> getList() {
         List<SanPham> list = new ArrayList<>();
-        String sqlString = " SELECT IDSP,IDNCC,IDLSP,IDMAUSAC,IDSIZE,TENSP,GIANHAP,"
-                + "GIABAN,CHATLIEU,SLTON,NGAYLAP,NGAYSUA,TRANGTHAI FROM SANPHAM";
+        String sqlString = " SELECT SANPHAM.IDCTSP, NHACUNGCAP.IDNCC , LOAISANPHAM.IDLSP,MAUSAC.IDMAUSAC,SIZE.IDSIZE, SANPHAM.TENSP ,SANPHAM.GIANHAP,SANPHAM.GIABAN,SANPHAM.CHATLIEU,SANPHAM.SLTON,SANPHAM.NGAYLAP,SANPHAM.NGAYSUA,SANPHAM.TRANGTHAI\n"
+                + "FROM     dbo.LOAISANPHAM INNER JOIN\n"
+                + "                  dbo.SANPHAM ON dbo.LOAISANPHAM.IDLSP = dbo.SANPHAM.IDLSP INNER JOIN\n"
+                + "                  dbo.MAUSAC ON dbo.SANPHAM.IDMAUSAC = dbo.MAUSAC.IDMAUSAC INNER JOIN\n"
+                + "                  dbo.NHACUNGCAP ON dbo.SANPHAM.IDNCC = dbo.NHACUNGCAP.IDNCC INNER JOIN\n"
+                + "                  dbo.SIZE ON dbo.SANPHAM.IDSIZE = dbo.SIZE.IDSIZE";
         try {
             Connection con = SQLSeverConnection.getConnection();
             PreparedStatement ps = con.prepareStatement(sqlString);
