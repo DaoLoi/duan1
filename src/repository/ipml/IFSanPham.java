@@ -17,8 +17,8 @@ public interface IFSanPham {
 
     public boolean add(SanPham sp);
 
-    public boolean update(SanPham sp, int idSP);
+    public boolean update(SanPham sp, String idSP);
 
-    public boolean delete(int idSP);
+    public boolean delete(String idSP);
 
 }

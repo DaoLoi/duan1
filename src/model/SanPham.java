@@ -12,8 +12,8 @@ import java.math.BigDecimal;
  */
 public class SanPham {
 
-    private int idsp;
-    private int idncc, idlsp, idMauSac, idSize;
+    private String idsp;
+    private String idncc, idlsp, idMauSac, idSize;
     private String tenSP;
     private BigDecimal giaNhap, giaBan;
     private String chatLieu;
@@ -25,7 +25,7 @@ public class SanPham {
     public SanPham() {
     }
 
-    public SanPham(int idsp, int idncc, int idlsp, int idMauSac, int idSize, String tenSP, BigDecimal giaNhap, BigDecimal giaBan, String chatLieu, int slTon, String ngayLap, String ngaySua, int trangThai) {
+    public SanPham(String idsp, String idncc, String idlsp, String idMauSac, String idSize, String tenSP, BigDecimal giaNhap, BigDecimal giaBan, String chatLieu, int slTon, String ngayLap, String ngaySua, int trangThai) {
         this.idsp = idsp;
         this.idncc = idncc;
         this.idlsp = idlsp;
@@ -41,43 +41,43 @@ public class SanPham {
         this.trangThai = trangThai;
     }
 
-    public int getIdsp() {
+    public String getIdsp() {
         return idsp;
     }
 
-    public void setIdsp(int idsp) {
+    public void setIdsp(String idsp) {
         this.idsp = idsp;
     }
 
-    public int getIdncc() {
+    public String getIdncc() {
         return idncc;
     }
 
-    public void setIdncc(int idncc) {
+    public void setIdncc(String idncc) {
         this.idncc = idncc;
     }
 
-    public int getIdlsp() {
+    public String getIdlsp() {
         return idlsp;
     }
 
-    public void setIdlsp(int idlsp) {
+    public void setIdlsp(String idlsp) {
         this.idlsp = idlsp;
     }
 
-    public int getIdMauSac() {
+    public String getIdMauSac() {
         return idMauSac;
     }
 
-    public void setIdMauSac(int idMauSac) {
+    public void setIdMauSac(String idMauSac) {
         this.idMauSac = idMauSac;
     }
 
-    public int getIdSize() {
+    public String getIdSize() {
         return idSize;
     }
 
-    public void setIdSize(int idSize) {
+    public void setIdSize(String idSize) {
         this.idSize = idSize;
     }
 
@@ -145,5 +145,4 @@ public class SanPham {
         this.trangThai = trangThai;
     }
 
-    
 }

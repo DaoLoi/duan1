@@ -202,6 +202,11 @@ public class QLSanPham extends javax.swing.JFrame {
         });
 
         btnXoa.setText("Xóa");
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -407,11 +412,11 @@ public class QLSanPham extends javax.swing.JFrame {
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
         SanPham sp = new SanPham();
-        sp.setIdsp(Integer.valueOf(txtIdSP.getText()));
-        sp.setIdncc((Integer) cboIdNCC.getSelectedItem());
-        sp.setIdlsp((Integer) cboIdLSP.getSelectedItem());
-        sp.setIdMauSac((Integer) cboIdMauSac.getSelectedItem());
-        sp.setIdSize((Integer) cboIdSize.getSelectedItem());
+        sp.setIdsp(txtIdSP.getText());
+        sp.setIdncc((String) cboIdNCC.getSelectedItem());
+        sp.setIdlsp((String) cboIdLSP.getSelectedItem());
+        sp.setIdMauSac((String) cboIdMauSac.getSelectedItem());
+        sp.setIdSize((String) cboIdSize.getSelectedItem());
         sp.setTenSP(txtTenSP.getText());
         Float giaNhap = Float.valueOf(txtGiaNhap.getText());
         BigDecimal GN = BigDecimal.valueOf(giaNhap);
@@ -474,7 +479,10 @@ public class QLSanPham extends javax.swing.JFrame {
         }
         List<SanPham> phams = phamService.getList();
         SanPham sp = phams.get(index);
-       ( (NhaCungCap)cboIdNCC.getSelectedItem()).getIdNcc();
+       sp.setIdncc((String) cboIdNCC.getSelectedItem());
+        sp.setIdlsp((String) cboIdLSP.getSelectedItem());
+        sp.setIdMauSac((String) cboIdMauSac.getSelectedItem());
+        sp.setIdSize((String) cboIdSize.getSelectedItem());
         sp.setTenSP(txtTenSP.getText());
         
         Float giaNhap = Float.valueOf(txtGiaNhap.getText());
@@ -494,7 +502,7 @@ public class QLSanPham extends javax.swing.JFrame {
         if (rdoChua.isSelected()) {
             sp.setTrangThai(0);
         }
-        int id = Integer.valueOf(txtIdSP.getText());
+        String id = txtIdSP.getText();
         try {
             phamService.update(sp, id);
             JOptionPane.showMessageDialog(this, "Sửa thành công");
@@ -504,6 +512,28 @@ public class QLSanPham extends javax.swing.JFrame {
             return;
         }
     }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        // TODO add your handling code here:
+        int index = tblRow.getSelectedRow();
+        if (index == -1) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn để xóa!");
+            return;
+        }
+        List<SanPham> sanPhams = phamService.getList();
+        SanPham sp = sanPhams.get(index);
+        String idSP = txtIdSP.getText();
+        int kq = JOptionPane.showConfirmDialog(this, "Bạn chắc chắn muốn xóa?", "Thông báo", JOptionPane.YES_NO_OPTION, JOptionPane.YES_OPTION);
+        if (kq == JOptionPane.YES_OPTION) {
+            try {
+                phamService.delete(idSP);
+                JOptionPane.showMessageDialog(this, "Xóa thành công!");
+                showData(phamService.getList());
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "Xóa thất bại!");
+            }
+        }
+    }//GEN-LAST:event_btnXoaActionPerformed
     public void fillTable() {
         List<SanPham> sanPhams = phamService.getList();
         if (sanPhams == null) {

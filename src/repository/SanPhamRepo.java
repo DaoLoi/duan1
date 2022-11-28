@@ -29,8 +29,8 @@ public class SanPhamRepo implements IFSanPham {
             PreparedStatement ps = con.prepareStatement(sqlString);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                SanPham sp = new SanPham(rs.getInt(1), rs.getInt(2), rs.getInt(3),
-                        rs.getInt(4), rs.getInt(5), rs.getString(6), rs.getBigDecimal(7),
+                SanPham sp = new SanPham(rs.getString(1), rs.getString(2), rs.getString(3),
+                        rs.getString(4), rs.getString(5), rs.getString(6), rs.getBigDecimal(7),
                         rs.getBigDecimal(8), rs.getString(9), rs.getInt(10), rs.getString(11),
                         rs.getString(12), rs.getInt(13));
 
@@ -53,10 +53,10 @@ public class SanPhamRepo implements IFSanPham {
         try {
             Connection con = SQLSeverConnection.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, sp.getIdncc());
-            ps.setInt(2, sp.getIdlsp());
-            ps.setInt(3, sp.getIdMauSac());
-            ps.setInt(4, sp.getIdSize());
+            ps.setString(1, sp.getIdncc());
+            ps.setString(2, sp.getIdlsp());
+            ps.setString(3, sp.getIdMauSac());
+            ps.setString(4, sp.getIdSize());
             ps.setString(5, sp.getTenSP());
             ps.setBigDecimal(6, sp.getGiaNhap());
             ps.setBigDecimal(7, sp.getGiaNhap());
@@ -75,14 +75,14 @@ public class SanPhamRepo implements IFSanPham {
     }
 
     @Override
-    public boolean update(SanPham sp, int idSP) {
+    public boolean update(SanPham sp, String idSP) {
         String sql = " UPDATE SANPHAM SET IDNCC=?,IDLSP=?,IDMAUSAC=?,IDSIZE=?,TENSP=?,"
                 + "GIANHAP=?,GIABAN=?,CHATLIEU=?,SLTON=?,NGAYLAP=?,NGAYSUA=?,TRANGTHAI=? WHERE IDSP=?";
         try ( Connection con = SQLSeverConnection.getConnection();  PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setInt(1, sp.getIdncc());
-            ps.setInt(2, sp.getIdlsp());
-            ps.setInt(3, sp.getIdMauSac());
-            ps.setInt(4, sp.getIdSize());
+            ps.setString(1, sp.getIdncc());
+            ps.setString(2, sp.getIdlsp());
+            ps.setString(3, sp.getIdMauSac());
+            ps.setString(4, sp.getIdSize());
             ps.setString(5, sp.getTenSP());
             ps.setBigDecimal(6, sp.getGiaNhap());
             ps.setBigDecimal(7, sp.getGiaBan());
@@ -91,7 +91,7 @@ public class SanPhamRepo implements IFSanPham {
             ps.setString(10, sp.getNgayLap());
             ps.setString(11, sp.getNgaySua());
             ps.setInt(12, sp.getTrangThai());
-            ps.setInt(13, idSP);
+            ps.setString(13, idSP);
             ps.executeUpdate();
             ps.close();
             con.close();
@@ -101,8 +101,20 @@ public class SanPhamRepo implements IFSanPham {
     }
 
     @Override
-    public boolean delete(int idSP) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean delete(String idSP) {
+        String sql = " DELETE FROM SANPHAM WHERE IDSP=?";
+        try {
+            Connection con = SQLSeverConnection.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, idSP);
+            ps.executeUpdate();
+            ps.close();
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
 }

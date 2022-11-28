@@ -32,13 +32,13 @@ public class SanPhamService implements IFSanPham {
     }
 
     @Override
-    public boolean update(SanPham sp, int idSP) {
+    public boolean update(SanPham sp, String idSP) {
         return sanPhamRepo.update(sp, idSP);
     }
 
     @Override
-    public boolean delete(int idSP) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean delete(String idSP) {
+        return sanPhamRepo.delete(idSP);
     }
 
 }
